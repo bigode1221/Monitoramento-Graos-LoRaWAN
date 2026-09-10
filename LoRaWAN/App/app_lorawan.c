@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021-2025 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -82,7 +82,7 @@ void MX_LoRaWAN_Process(void)
   /* USER CODE BEGIN MX_LoRaWAN_Process_1 */
 
   /* USER CODE END MX_LoRaWAN_Process_1 */
-  LoRaWAN_Process();
+  UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
   /* USER CODE BEGIN MX_LoRaWAN_Process_2 */
 
   /* USER CODE END MX_LoRaWAN_Process_2 */

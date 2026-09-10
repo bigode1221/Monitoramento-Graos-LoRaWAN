@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -41,48 +41,6 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* Pin defines */
-
-/**  Definition for Probe Line 1   **/
-/**
-  * @brief Pin of Probe Line 1
-  */
-#define PROBE_LINE1_PIN                           GPIO_PIN_12
-
-/**
-  * @brief Port of Probe Line 1
-  */
-#define PROBE_LINE1_PORT                          GPIOB
-
-/**
-  * @brief Enable GPIOs clock of Probe Line 1
-  */
-#define PROBE_LINE1_CLK_ENABLE()                  __HAL_RCC_GPIOB_CLK_ENABLE()
-
-/**
-  * @brief Disable GPIOs clock of Probe Line 1
-  */
-#define PROBE_LINE1_CLK_DISABLE()                 __HAL_RCC_GPIOB_CLK_DISABLE()
-
-/**  Definition for Probe Line 2   **/
-/**
-  * @brief Pin of Probe Line 2
-  */
-#define PROBE_LINE2_PIN                           GPIO_PIN_13
-
-/**
-  * @brief Port of Probe Line 2
-  */
-#define PROBE_LINE2_PORT                          GPIOB
-
-/**
-  * @brief Enable GPIOs clock of Probe Line 2
-  */
-#define PROBE_LINE2_CLK_ENABLE()                  __HAL_RCC_GPIOB_CLK_ENABLE()
-
-/**
-  * @brief Disable GPIOs clock of Probe Line 2
-  */
-#define PROBE_LINE2_CLK_DISABLE()                 __HAL_RCC_GPIOB_CLK_DISABLE()
 
 /* USER CODE BEGIN EC */
 

@@ -1,3 +1,4 @@
+// esse
 #ifndef APP_CONFIG_H
 #define APP_CONFIG_H
 
@@ -7,8 +8,8 @@
 
 #define APP_LORA_AU915_FSB                  2U
 #define APP_LORA_JOIN_MAX_FAILS             5U
-#define APP_LORA_JOIN_RETRY_SECONDS          (30U * 60U)
-#define APP_TELEMETRY_PERIOD_SECONDS        (30U * 60U)
+#define APP_LORA_JOIN_RETRY_SECONDS          (15U)
+#define APP_TELEMETRY_PERIOD_SECONDS        (30U * 60U)  /* 30 min em operacao normal */
 
 #if ((APP_LORA_AU915_FSB < 1U) || (APP_LORA_AU915_FSB > 8U))
 #error "APP_LORA_AU915_FSB must be between 1 and 8"
@@ -21,13 +22,18 @@
 #define APP_DHT22_1_PORT                    GPIOA
 #define APP_DHT22_1_PIN                     GPIO_PIN_0
 #define APP_DHT22_1_TEMPERATURE_CHANNEL     1U
-#define APP_DHT22_1_HUMIDITY_CHANNEL        2U
+#define APP_DHT22_1_HUMIDITY_CHANNEL        1U
 #define APP_DHT22_2_PORT                    GPIOA
 #define APP_DHT22_2_PIN                     GPIO_PIN_1
-#define APP_DHT22_2_TEMPERATURE_CHANNEL     3U
-#define APP_DHT22_2_HUMIDITY_CHANNEL        4U
+#define APP_DHT22_2_TEMPERATURE_CHANNEL     2U
+#define APP_DHT22_2_HUMIDITY_CHANNEL        2U
 #define APP_BATTERY_CHANNEL                 5U
 /* Cayenne LPP channels 6 and 7 are reserved for the next temperature/humidity sensor. */
+
+/* Canal Cayenne LPP para CO2 (Analog Input, 0.01 resolução).
+ * Passar co2_ppm / 100.0f → servidor exibe X.XX → valor real = X.XX × 100 ppm. */
+#define APP_MHZ19E_CO2_CHANNEL              3U
+
 #define APP_DHT22_BOOT_SETTLE_MS             300U
 #define APP_DHT22_START_LOW_MS              20U
 #define APP_DHT22_RELEASE_US                40U

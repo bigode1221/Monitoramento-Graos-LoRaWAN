@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -51,6 +51,12 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
+void MX_GPIO_Init(void);
+void MX_DMA_Init(void);
+void MX_ADC_Init(void);
+void MX_RTC_Init(void);
+void MX_SUBGHZ_Init(void);
+void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN EFP */
 
@@ -60,23 +66,12 @@ void Error_Handler(void);
 #define RTC_N_PREDIV_S 10
 #define RTC_PREDIV_S ((1<<RTC_N_PREDIV_S)-1)
 #define RTC_PREDIV_A ((1<<(15-RTC_N_PREDIV_S))-1)
-#define LED1_Pin GPIO_PIN_15
-#define LED1_GPIO_Port GPIOB
-#define LED2_Pin GPIO_PIN_9
-#define LED2_GPIO_Port GPIOB
-#define PROB2_Pin GPIO_PIN_13
-#define PROB2_GPIO_Port GPIOB
-#define PROB1_Pin GPIO_PIN_12
-#define PROB1_GPIO_Port GPIOB
-#define BUT3_Pin GPIO_PIN_6
-#define BUT3_GPIO_Port GPIOC
-#define BUT3_EXTI_IRQn EXTI9_5_IRQn
-#define LED3_Pin GPIO_PIN_11
-#define LED3_GPIO_Port GPIOB
-#define USARTx_RX_Pin GPIO_PIN_3
-#define USARTx_RX_GPIO_Port GPIOA
-#define USARTx_TX_Pin GPIO_PIN_2
-#define USARTx_TX_GPIO_Port GPIOA
+#define RF_TXEN_Pin GPIO_PIN_6
+#define RF_TXEN_GPIO_Port GPIOA
+#define RF_RXEN_Pin GPIO_PIN_7
+#define RF_RXEN_GPIO_Port GPIOA
+#define JMP_BOOT_Pin GPIO_PIN_3
+#define JMP_BOOT_GPIO_Port GPIOH
 
 /* USER CODE BEGIN Private defines */
 

@@ -47,11 +47,32 @@
  ******************************************************************************
  */
 #include "se-identity.h"
-#include "lorawan_version.h"
+#include "LoRaMacVersion.h"
 
 /* USER CODE BEGIN EC1 */
 
 /* USER CODE END EC1 */
+
+/*!
+ * When using ABP activation the MAC layer must know in advance to which server
+ * version it will be connected.
+ */
+#define ABP_ACTIVATION_LRWAN_VERSION                       LORAMAC_VERSION
+
+/*!
+ * Indicates if the end-device support the operation with repeaters
+ */
+#define LORAWAN_REPEATER_SUPPORT                           false
+
+/*!
+ * Indicates if the end-device is to be connected to a private or public network
+ */
+#define LORAWAN_PUBLIC_NETWORK                             true
+
+/*!
+ * Current network ID
+ */
+#define LORAWAN_NETWORK_ID                                 ( uint32_t )0
 
 /* USER CODE BEGIN EC2 */
 

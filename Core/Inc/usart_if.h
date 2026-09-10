@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -19,8 +19,7 @@
 /* USER CODE END Header */
 
 #include "stm32_adv_trace.h"
-#include "usart.h"
-#include "dma.h"
+#include "main.h"
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USART_IF_H__

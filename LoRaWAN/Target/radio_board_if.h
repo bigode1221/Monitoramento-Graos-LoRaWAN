@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -63,7 +63,7 @@ extern "C" {
 /* USER CODE END Exported Parameters */
 /* Indicates the type of switch between the ones proposed by CONFIG Constants
  */
-#define RBI_CONF_RFO                        RBI_CONF_RFO_LP_HP
+#define RBI_CONF_RFO                        RBI_CONF_RFO_HP
 
 /* Indicates whether or not TCXO is supported by the board
  * 0: TCXO not supported
@@ -75,7 +75,7 @@ extern "C" {
  * 0: DCDC not supported
  * 1: DCDC supported
  */
-#define IS_DCDC_SUPPORTED                   1U
+#define IS_DCDC_SUPPORTED                   0U
 
 /* USER CODE BEGIN Exported Parameters_2 */
 

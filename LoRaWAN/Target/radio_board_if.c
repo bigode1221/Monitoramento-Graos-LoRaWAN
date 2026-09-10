@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -76,7 +76,23 @@ int32_t RBI_Init(void)
   /* 2/ Or implement RBI_Init here */
   int32_t retcode = 0;
   /* USER CODE BEGIN RBI_Init_2 */
-#warning user to provide its board code or to call his board driver functions
+    GPIO_InitTypeDef  gpio_init_structure = {0};
+	/* Enable the Radio Switch Clock */
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	/* Configure the Radio Switch pin */
+	gpio_init_structure.Mode  = GPIO_MODE_OUTPUT_PP;
+	gpio_init_structure.Pull  = GPIO_NOPULL;
+	gpio_init_structure.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+
+	gpio_init_structure.Pin   = RF_TXEN_Pin;
+	HAL_GPIO_Init(RF_TXEN_GPIO_Port, &gpio_init_structure);
+	gpio_init_structure.Pin   = RF_RXEN_Pin;
+	HAL_GPIO_Init(RF_RXEN_GPIO_Port, &gpio_init_structure);
+
+	/* Configure the Radio Switch pin */
+	HAL_GPIO_WritePin(RF_TXEN_GPIO_Port,  RF_TXEN_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(RF_RXEN_GPIO_Port,  RF_TXEN_Pin, GPIO_PIN_RESET);
   /* USER CODE END RBI_Init_2 */
   return retcode;
 #endif  /* USE_BSP_DRIVER  */
@@ -102,7 +118,15 @@ int32_t RBI_DeInit(void)
   /* 2/ Or implement RBI_DeInit here */
   int32_t retcode = 0;
   /* USER CODE BEGIN RBI_DeInit_2 */
-#warning user to provide its board code or to call his board driver functions
+	/* Enable the Radio Switch Clock */
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	/* Turn off switch */
+	HAL_GPIO_WritePin(RF_TXEN_GPIO_Port, RF_TXEN_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(RF_RXEN_GPIO_Port, RF_RXEN_Pin, GPIO_PIN_RESET);
+	/* DeInit the Radio Switch pin */
+	HAL_GPIO_DeInit(RF_TXEN_GPIO_Port, RF_TXEN_Pin);
+	HAL_GPIO_DeInit(RF_RXEN_GPIO_Port, RF_RXEN_Pin);
   /* USER CODE END RBI_DeInit_2 */
   return retcode;
 #endif  /* USE_BSP_DRIVER */
@@ -129,7 +153,35 @@ int32_t RBI_ConfigRFSwitch(RBI_Switch_TypeDef Config)
   /* 2/ Or implement RBI_ConfigRFSwitch here */
   int32_t retcode = 0;
   /* USER CODE BEGIN RBI_ConfigRFSwitch_2 */
-#warning user to provide its board code or to call his board driver functions
+  switch (Config)
+         {
+          case RBI_SWITCH_OFF:
+               /* Turn off switch */
+               HAL_GPIO_WritePin(RF_RXEN_GPIO_Port, RF_RXEN_Pin, GPIO_PIN_RESET);
+               HAL_GPIO_WritePin(RF_TXEN_GPIO_Port, RF_TXEN_Pin, GPIO_PIN_RESET);
+               break;
+
+          case RBI_SWITCH_RX:
+               /*Turns On in Rx Mode the RF Switch */
+               HAL_GPIO_WritePin(RF_RXEN_GPIO_Port, RF_RXEN_Pin, GPIO_PIN_SET);
+               HAL_GPIO_WritePin(RF_TXEN_GPIO_Port, RF_TXEN_Pin, GPIO_PIN_RESET);
+               break;
+
+          case RBI_SWITCH_RFO_LP:
+               /*Turns On in Tx Low Power the RF Switch */
+               HAL_GPIO_WritePin(RF_RXEN_GPIO_Port, RF_RXEN_Pin, GPIO_PIN_RESET);
+               HAL_GPIO_WritePin(RF_TXEN_GPIO_Port, RF_TXEN_Pin, GPIO_PIN_SET);
+               break;
+
+          case RBI_SWITCH_RFO_HP:
+               /*Turns On in Tx High Power the RF Switch */
+               HAL_GPIO_WritePin(RF_RXEN_GPIO_Port, RF_RXEN_Pin, GPIO_PIN_RESET);
+               HAL_GPIO_WritePin(RF_TXEN_GPIO_Port, RF_TXEN_Pin, GPIO_PIN_SET);
+               break;
+
+          default:
+                  break;
+        }
   /* USER CODE END RBI_ConfigRFSwitch_2 */
   return retcode;
 #endif  /* USE_BSP_DRIVER */

@@ -1,18 +1,14 @@
-# Build do STM32CubeIDE
-**/Debug/
-**/Release/
+# STM32CubeIDE build artifacts
+Debug/
+Release/
 *.elf
 *.bin
 *.hex
 *.map
-*.list
-*.su
 *.o
 *.d
+*.su
 *.cyclo
 
-# Configurações temporárias
-.metadata/
-
-# Chaves reais LoRaWAN
-**/se-identity.h
+# Eclipse local configs
+.settings/language.settings.xml
