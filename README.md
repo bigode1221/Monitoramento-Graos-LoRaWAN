@@ -56,7 +56,7 @@ O sistema é montado dentro de um tubo de PVC de 150 cm de comprimento, pensado 
 * Região: AU915 (padrão Brasil).
 * Sub-banda: FSB2 (canais de uplink 8 a 15 e canal 65).
 * Ativação: OTAA (Over-The-Air Activation).
-* Taxa de Dados: Travado em DR_2 (SF10 / 125 kHz) com ADR desativado para garantir entrega em trajetos rodoviários.
+* Taxa de Dados: Travado em DR_3 (SF9 / 125 kHz) com ADR desativado para comportar o payload de 22 bytes em conformidade com o Dwell Time da sub-banda AU915.
 * Intervalo de Envio: 30 minutos em operação normal (primeiro envio 5 segundos após confirmação do Join).
 * Formato do Payload: Cayenne LPP (22 bytes por pacote):
   * Canal 1: Temperatura e Umidade (DHT22 Topo)

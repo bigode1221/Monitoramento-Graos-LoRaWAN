@@ -419,11 +419,11 @@ void LoRaWAN_Init(void)
 	 LoRaMacMibSetRequestConfirm(&mibReq);
 
 	 mibReq.Type = MIB_CHANNELS_DATARATE;
-	 mibReq.Param.ChannelsDatarate = DR_2;
+	 mibReq.Param.ChannelsDatarate = DR_3;
 	 LoRaMacMibSetRequestConfirm(&mibReq);
 	 
 	 LmHandlerSetAdrEnable(false);
-	 LmHandlerSetTxDatarate(DR_2);
+	 LmHandlerSetTxDatarate(DR_3);
   /* USER CODE END LoRaWAN_Init_2 */
 
 	 /* Impede a placa de dormir profundamente durante o Join para não perder a janela de RX */
@@ -682,13 +682,13 @@ static void SendTxData(void)
           // BLINDAGEM MÁXIMA: Força DR_3 e ADR OFF através da API oficial do LmHandler
           // garantindo que a biblioteca interna atualize seus parâmetros.
           LmHandlerSetAdrEnable(false);
-          LmHandlerSetTxDatarate(DR_2);
+          LmHandlerSetTxDatarate(DR_3);
           MibRequestConfirm_t mibReq;
           mibReq.Type = MIB_ADR;
           mibReq.Param.AdrEnable = false;
           LoRaMacMibSetRequestConfirm(&mibReq);
           mibReq.Type = MIB_CHANNELS_DATARATE;
-          mibReq.Param.ChannelsDatarate = DR_2;
+          mibReq.Param.ChannelsDatarate = DR_3;
           LoRaMacMibSetRequestConfirm(&mibReq);
 
           /* Verifica DR e ADR efetivos apos forcar */
@@ -895,11 +895,11 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
 	      LoRaMacMibSetRequestConfirm(&mibReq);
 
 	      mibReq.Type = MIB_CHANNELS_DATARATE;
-	      mibReq.Param.ChannelsDatarate = DR_2;
+	      mibReq.Param.ChannelsDatarate = DR_3;
 	      LoRaMacMibSetRequestConfirm(&mibReq);
 
 	      LmHandlerSetAdrEnable(false);
-	      LmHandlerSetTxDatarate(DR_2);
+	      LmHandlerSetTxDatarate(DR_3);
 
           /* Configura o LED verde (PB4) como Output e inicia o Timer de 5s */
           GPIO_InitTypeDef GPIO_InitStruct = {0};
