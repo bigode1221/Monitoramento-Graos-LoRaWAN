@@ -21,3 +21,8 @@ Projeto "Monitoramento Inteligente da Qualidade de Grãos" rodando em módulo EB
 # Particularidades Críticas no Código
 1. O **Data Rate é forçado em DR_2** e o **ADR está desativado** (hardcoded em `lora_app.c` no envio e no init).
 2. O **Sleep Mode (StopMode) fica desativado** durante o Join para o microcontrolador não dormir e não perder as janelas de RX.
+
+# Repositório GitHub
+* Repositório: `https://github.com/bigode1221/Monitoramento-Graos-LoRaWAN`
+* Branch principal: `main`
+* Conta: `bigode1221` (Ryan Kevin <ryankevin374@gmail.com>)
