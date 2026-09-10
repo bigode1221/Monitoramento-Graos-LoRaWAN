@@ -92,7 +92,23 @@ A próxima etapa do projeto consiste no desenvolvimento dos modelos preditivos a
 
 1. Cálculo em software do Teor de Umidade de Equilíbrio (EMC) e da taxa de Perda de Massa Seca acumulada (DML) ao longo da rota.
 2. Treinamento de modelos de Machine Learning correlacionando o histórico de tempo, variações térmicas e curva de CO2 da viagem com a qualidade do grão na entrega.
-3. Recomendação automatizada de manejo de silo antes mesmo da abertura das bicas do caminhão.
+
+---
+
+## Fontes e Referências Científicas
+
+Os parâmetros agronômicos, biomarcadores de respiração celular e a metodologia de predição utilizados nesta sonda baseiam-se na literatura científica e normas técnicas:
+
+* Rodrigues, D. M., Coradi, P. C., Teodoro, L. P. R., Teodoro, P. E., Moraes, R. S., & Leal, M. M. (2024). *Monitoring and predicting corn grain quality on the transport and post-harvest operations in storage units using sensors and machine learning models*. **Scientific Reports (Nature)**, 14(1), 6157.  
+  Link: [https://www.nature.com/articles/s41598-024-56879-5](https://www.nature.com/articles/s41598-024-56879-5)  
+  DOI: `10.1038/s41598-024-56879-5`
+
+* ASABE Standards (2012). *ASAE D245.7: Moisture Relationships of Plant-based Agricultural Products*. American Society of Agricultural and Biological Engineers, St. Joseph, MI. (Referência para as equações de equilíbrio higroscópico - EMC de milho).
+
+* Embrapa Milho e Sorgo. *Manejo e Conservação de Grãos de Milho Armazenados*. Empresa Brasileira de Pesquisa Agropecuária.  
+  Link: [https://www.embrapa.br/milho-e-sorgo](https://www.embrapa.br/milho-e-sorgo)
+
+* Bern, C. J., Steele, J. L., & Kumar, A. (2002). *Carbon dioxide evolution as an indicator of grain deterioration*. Applied Engineering in Agriculture, 18(4), 485-489. (Fundamentação do CO2 como biomarcador precoce de respiração celular e perda de massa seca).
 
 ---
 
