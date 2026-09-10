@@ -26,3 +26,4 @@ Projeto "Monitoramento Inteligente da Qualidade de Grãos" rodando em módulo EB
 * Repositório: `https://github.com/bigode1221/Monitoramento-Graos-LoRaWAN`
 * Branch principal: `main`
 * Conta: `bigode1221` (Ryan Kevin <ryankevin374@gmail.com>)
+* **Regra de automação:** Toda vez que qualquer código ou arquivo for alterado/finalizado, fazer automaticamente o `git add`, `git commit` com mensagem descritiva e `git push origin main` para manter o GitHub sempre atualizado e marcar as contribuições diárias, sem precisar que o usuário peça.
