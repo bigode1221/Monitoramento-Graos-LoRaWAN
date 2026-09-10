@@ -72,6 +72,12 @@ MHZ19E_Status_t MHZ19E_Read(uint16_t *co2_ppm)
 
   for (uint8_t attempt = 0U; attempt < 2U; attempt++)
   {
+    /* Se a primeira tentativa falhar, re-inicializa o periferico UART para garantir sincronismo */
+    if (attempt > 0U)
+    {
+      MHZ19E_Init();
+    }
+
     /* 0. Limpa ORE (Overrun Error), ruído e framing que possam ter acumulado durante
      *    o delay de 60s ou no boot, e esvazia quaisquer bytes residuais no RDR.
      *    Sem isso, o ORE bloqueia a recepção de novos bytes no hardware STM32! */

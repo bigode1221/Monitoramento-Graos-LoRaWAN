@@ -615,9 +615,22 @@ static void ReadDht22Sensors(bool add_to_payload, bool log_to_termite, int8_t ac
   {
     float temperature = 0.0f;
     float humidity = 0.0f;
-    DHT22_Status_t sensor_status = DHT22_Read(app_dht22_sensors[sensor_index].port,
-                                              app_dht22_sensors[sensor_index].pin,
-                                              &temperature, &humidity);
+    DHT22_Status_t sensor_status = DHT22_STATUS_ERROR;
+
+    for (uint8_t retry = 0U; retry < 2U; retry++)
+    {
+      sensor_status = DHT22_Read(app_dht22_sensors[sensor_index].port,
+                                 app_dht22_sensors[sensor_index].pin,
+                                 &temperature, &humidity);
+      if (sensor_status == DHT22_STATUS_OK)
+      {
+        break;
+      }
+      if (retry == 0U)
+      {
+        HAL_Delay(1000U);
+      }
+    }
 
     if (sensor_status == DHT22_STATUS_OK)
     {
@@ -916,10 +929,10 @@ static void OnJoinRequest(LmHandlerJoinParams_t *joinParams)
 	      UTIL_TIMER_SetPeriod(&TxTimer, APP_LORA_JOIN_RETRY_SECONDS * 1000U);
 	      UTIL_TIMER_Start(&TxTimer);
 	    }
-	    
-	    /* Independente de sucesso ou falha, o processo de Join acabou (ou vai demorar pra tentar de novo).
-	       Podemos liberar a placa para dormir profundamente de novo! */
-	    UTIL_LPM_SetStopMode((1 << CFG_LPM_APPLI_Id), UTIL_LPM_ENABLE);
+
+	    /* Mantem Stop Mode DESATIVADO para preservar USART1 (MH-Z19E), clocks PLL (48MHz) e DWT (DHT22).
+	       Em modo SLEEP o microcontrolador dorme via WFI sem desconfigurar perifericos nem clocks. */
+	    UTIL_LPM_SetStopMode((1 << CFG_LPM_APPLI_Id), UTIL_LPM_DISABLE);
 
 	    APP_LOG(TS_OFF, VLEVEL_M, "###### U/L FRAME:JOIN | DR:%d | PWR:%d\r\n", joinParams->Datarate, joinParams->TxPower);
 	  }
